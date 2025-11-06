@@ -27,7 +27,6 @@ console.log(weather);
 
 // Main logic (check how much good field and whether if it's a good time to plant)
 // Hint for Main logic : use map funtion and forEach loop
-let subur = 0;
 let petakDiTanam = 0;
 
 // Output
