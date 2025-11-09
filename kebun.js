@@ -22,11 +22,38 @@ weather.temp = useRNG(20, 15);
 weather.humidity = useRNG(20, 40);
 weather.windSpeed = useRNG(10, 10);
 
-console.log(field);
-console.log(weather);
-
 // Main logic (check how much good field and whether if it's a good time to plant)
-// Hint for Main logic : use map funtion and forEach loop
-let petakDiTanam = 0;
+let fertile = 0;
+
+let rowStatus = field.map((row) => {
+  let fertileField = 0;
+  row.forEach((field) => {
+    if (field === "subur") fertileField++;
+  });
+  if (fertileField >= 2) {
+    fertile += fertileField;
+  }
+  fertileField = 0;
+});
+
+let weatherLogic =
+  weather.temp >= 20 &&
+  weather.temp <= 30 &&
+  weather.humidity > 50 &&
+  weather.windSpeed < 15;
 
 // Output
+console.log("Hasil perhitungan : ");
+console.log(field);
+console.log(weather);
+console.log(`Total petak subur : ${fertile}`);
+console.log(
+  weatherLogic == true
+    ? "Total petak ditanam : " + fertile
+    : "Total petak ditanam : " + 0
+);
+console.log(
+  weatherLogic == true
+    ? "Cuaca cocok untuk bercocok bertanam"
+    : "Cuaca tidak cocok untuk bercocok bertanam"
+);
